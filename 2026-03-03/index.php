@@ -1,11 +1,11 @@
-
+<!-- Feito por Eduardo Soares e Jorge Cannalonga -->
 <!doctype html>
 <html lang="pt-br">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Pizzaria</title>
-    <link rel="shortcut icon" href="icon.webp" type="image/x-icon">
+    <link rel="shortcut icon" href="icon.webp" type="image/x-icon" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -15,12 +15,8 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body class="bg-dark">
-    <?php
-    var_dump($_POST);
-    echo '<p class="text-white">'.$_POST['nome'].'</p>'
-    ?>
     <div class="container d-flex justify-content-center mt-4">
-      <div class="card bg-dark" style="width: 18rem">
+      <div class="card bg-dark" style="width: 36rem">
         <form class="card-body" action="#" method="post">
           <h3 class="fw-bold text-warning">Pizzatech</h3>
           <div class="mb-3">
@@ -30,19 +26,29 @@
         Borda Recheada (radio)
         Bebidas (checkbox)
         -->
-            <label for="nome" class="form-label text-white"
+            <label for="nome" class="form-label text-white fw-bold"
               >Digite seu nome:</label
             >
-            <input type="text" class="form-control" id="nome" name="nome" />
+            <input
+              type="text"
+              class="form-control"
+              id="nome"
+              name="nome"
+              required
+            />
           </div>
-          <label class="text-white">Selecione o sabor da pizza: </label>
-          <select class="form-select" aria-label="Exemplo de select" name="sabor">
+          <label class="text-white fw-bold">Selecione o sabor da pizza: </label>
+          <select
+            class="form-select"
+            aria-label="Exemplo de select"
+            name="sabor"
+          >
             <option value="Mussarela">Mussarela – R$50,00</option>
             <option value="Calabresa">Calabresa – R$52,00</option>
             <option value="Portuguesa">Portuguesa – R$60,00</option>
           </select>
           <br />
-          <label class="text-white">Borda Recheada:</label>
+          <label class="text-white fw-bold">Borda Recheada:</label>
           <div class="form-check">
             <input
               class="form-check-input"
@@ -60,17 +66,59 @@
               class="form-check-input"
               type="radio"
               name="borda_recheada"
+              value="nao"
               id="radio2"
-              checked
+              required
             />
             <label class="form-check-label text-white" for="radio2">
               Não – sem custo adicional
             </label>
           </div>
-          <button>Enviar</button>
+          <br />
+          <label class="text-white fw-bold">Acompanhamentos:</label>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              name="bebidas"
+              id="RefriLata"
+            />
+            <label class="form-check-label text-white" for="RefriLata">
+              Refrigerante Lata - R$8,00
+            </label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              name="bebidas"
+              id="Refri2L"
+            />
+            <label class="form-check-label text-white" for="Refri2L">
+              Refrigerante 2L – R$20,00
+            </label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              name="bebidas"
+              id="Agua"
+            />
+            <label class="form-check-label text-white" for="Agua">
+              Água – R$5,00
+            </label>
+          </div>
+          <br />
+          <button type="submit" class="btn btn-warning rounded-pill text-white">
+            Enviar
+          </button>
         </form>
       </div>
-
+      <?php if ($_SERVER['REQUEST_METHOD'] === "POST"): ?>
       <div class="card bg-warning" style="width: 18rem">
         <div class="card-body">
           <h3 class="text-light fw-bold text-center">Resumo do Pedido</h3>
@@ -83,6 +131,7 @@
           -->
         </div>
       </div>
+      <?php endif; ?>
     </div>
 
     <script
