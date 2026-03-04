@@ -1,4 +1,5 @@
 <!-- Feito por Eduardo Soares e Jorge Cannalonga -->
+
 <!doctype html>
 <html lang="pt-br">
   <head>
@@ -15,7 +16,7 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body class="bg-dark">
-    <div class="container d-flex justify-content-center mt-4">
+    <div class="container d-flex justify-content-center mt-4 gap-2">
       <div class="card bg-dark" style="width: 36rem">
         <form class="card-body" action="#" method="post">
           <h3 class="fw-bold text-warning">Pizzatech</h3>
@@ -80,8 +81,8 @@
             <input
               class="form-check-input"
               type="checkbox"
-              value=""
-              name="bebidas"
+              value="sim"
+              name="RefriLata"
               id="RefriLata"
             />
             <label class="form-check-label text-white" for="RefriLata">
@@ -92,8 +93,8 @@
             <input
               class="form-check-input"
               type="checkbox"
-              value=""
-              name="bebidas"
+              value="sim"
+              name="Refri2L"
               id="Refri2L"
             />
             <label class="form-check-label text-white" for="Refri2L">
@@ -104,8 +105,8 @@
             <input
               class="form-check-input"
               type="checkbox"
-              value=""
-              name="bebidas"
+              value="sim"
+              name="Agua"
               id="Agua"
             />
             <label class="form-check-label text-white" for="Agua">
@@ -121,16 +122,71 @@
       <?php if ($_SERVER['REQUEST_METHOD'] === "POST"): ?>
       <div class="card bg-warning" style="width: 18rem">
         <div class="card-body">
-          <h3 class="text-light fw-bold text-center">Resumo do Pedido</h3>
-          <!-- 
-            Nome do cliente 
-            Sabor da pizza selecionada 
-            Se a borda foi adicionada ou não 
-            Lista das bebidas escolhidas (ou "nenhuma", se nenhuma bebida for selecionada) 
-            Cálculo e exibição do valor total a pagar.  
-          -->
+          <h3 class="text-dark fw-bold">Resumo do Pedido</h3>
+          
+          <?php 
+          $preco = 0;
+
+          $exibirRefriLata = $_POST['RefriLata'] ?? 'nao';
+          $exibirRefri2l = $_POST['Refri2L'] ?? 'nao'; 
+          $exibirAgua = $_POST['Agua'] ?? 'nao';
+
+          $sabor = $_POST['sabor'] ?? null;
+          $bordaRecheada = $_POST['borda_recheada'] ?? 'nao';
+
+          // Preço do sabor da pizza
+          if (isset($sabor)) {
+            if ($sabor === 'Mussarela') $preco += 50;
+            if ($sabor === 'Calabresa') $preco += 52;
+            if ($sabor === 'Portuguesa') $preco += 60;
+          }
+
+          // Preço borda recheada
+          if ($bordaRecheada) $preco += 5;
+
+          // Preço acompanhamentos
+          if (isset($_POST['RefriLata'])) {
+            $preco += 8;
+          }
+          if (isset($_POST['Refri2L'])) {
+            $preco += 20;
+          }
+          if (isset($_POST['Agua'])) {
+            $preco += 5;
+          }
+          ?>
+          <b>Nome:</b> <?php echo $_POST['nome'] ?>
+          <br />
+          <b>Sabor da Pizza:</b><?php echo $_POST['sabor'] ?? 'N/A'?>
+          <br />
+          <b>Borda Recheada:</b><?php echo $_POST['borda_recheada'] ?? 'nao'?>
+          <br />
+          <b>Acompanhamentos:</b>
+          <ul>
+            <?php 
+            if ($exibirRefriLata == "sim") {
+              echo "<li>Refrigerante Lata</li>";
+            }
+            ?> 
+            <?php
+            if ($exibirRefri2l == 'sim') {
+              echo "<li>Refrigerante 2L</li>";
+            }
+              ?>
+            <?php
+            if ($exibirAgua == 'sim') {
+              echo "<li>Água</li>";
+            }
+            ?>
+          </ul>
+          <hr>
+          <!-- number_format: faz o número '5' ficar como '5,00' -->
+          <b>Total: </b><?php echo 'R$' . number_format($preco, 2, ',', '') ?>
         </div>
       </div>
+      <script>
+        console.table(JSON.parse(`<?php echo json_encode($_POST);?>`));
+      </script>
       <?php endif; ?>
     </div>
 
