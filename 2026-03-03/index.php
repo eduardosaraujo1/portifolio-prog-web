@@ -18,7 +18,7 @@
 
 <body class="bg-dark">
   <div class="container d-flex justify-content-center mt-4 gap-2">
-    <div class="card bg-dark" style="width: 36rem">
+    <div class="card bg-dark">
       <form class="card-body" action="#" method="post">
         <h3 class="fw-bold text-warning">Pizzatech</h3>
         <div class="mb-3">
@@ -112,7 +112,7 @@
       </form>
     </div>
     <?php if ($_SERVER['REQUEST_METHOD'] === "POST"): ?>
-      <div class="card bg-warning" style="width: 18rem">
+      <div class="card bg-warning">
         <div class="card-body">
           <h3 class="text-dark fw-bold">Resumo do Pedido</h3>
 

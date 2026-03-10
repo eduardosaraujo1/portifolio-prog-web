@@ -4,3 +4,13 @@ body {
   background-repeat: no-repeat;
   min-height: 100vh;
 }
+
+@media screen and (width < 780px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .container > * {
+    width: 100%;
+  }
+}
