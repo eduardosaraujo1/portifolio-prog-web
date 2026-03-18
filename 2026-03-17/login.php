@@ -1,17 +1,18 @@
 <?php
 session_start();
 
+define('TRINTA_DIAS', 3600 * 24 * 30);
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'] ?? null;
     // $password = $_POST['senha'] ?? null;
     $remember_me = ($_POST['lembreme'] ?? null) == 'on';
 
-    // Sem banco de dados, a senha não serve pra nada, olha que legal :D
+    // Sem banco de dados, a senha não é utilizada.
     if (isset($email)) {
         $_SESSION['user_email'] = $email;
 
         if ($remember_me) {
-            define('TRINTA_DIAS', 3600 * 24 * 30);
             setcookie('user_email', $email, time() + TRINTA_DIAS);
         }
 
