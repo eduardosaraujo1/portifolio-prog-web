@@ -1,54 +1,54 @@
 {
-  "products": [
-    {
-      "name": "NebulaX Wireless Mouse",
-      "price": 49.99,
-      "image": "https://example.com/images/nebula_mouse.jpg"
-    },
-    {
-      "name": "HyperCore 32GB DDR5 RAM",
-      "price": 129.99,
-      "image": "https://example.com/images/hypercore_ram.jpg"
-    },
-    {
-      "name": "QuantumBlade X9 CPU",
-      "price": 399.99,
-      "image": "https://example.com/images/quantumblade_cpu.jpg"
-    },
-    {
-      "name": "LumaType RGB Keyboard",
-      "price": 89.99,
-      "image": "https://example.com/images/lumatype_keyboard.jpg"
-    },
-    {
-      "name": "VisionMax 27\" 4K Monitor",
-      "price": 329.99,
-      "image": "https://example.com/images/visionmax_monitor.jpg"
-    },
-    {
-      "name": "AeroCool Silent Fan",
-      "price": 24.99,
-      "image": "https://example.com/images/aerocool_fan.jpg"
-    },
-    {
-      "name": "TitanForge Gaming GPU",
-      "price": 699.99,
-      "image": "https://example.com/images/titanforge_gpu.jpg"
-    },
-    {
-      "name": "FlashDrive Pro 2TB SSD",
-      "price": 219.99,
-      "image": "https://example.com/images/flashdrive_ssd.jpg"
-    },
-    {
-      "name": "EchoWave USB Headset",
-      "price": 59.99,
-      "image": "https://example.com/images/echowave_headset.jpg"
-    },
-    {
-      "name": "CoreLink WiFi 7 Router",
-      "price": 179.99,
-      "image": "https://example.com/images/corelink_router.jpg"
-    }
-  ]
+    "products": [
+        {
+            "name": "NebulaX Wireless Mouse",
+            "price": 49.99,
+            "image": "https://wallpapers.com/images/hd/gaming-mice-1600-x-900-wallpaper-vitcrhi4vf0gfvzn.jpg"
+        },
+        {
+            "name": "HyperCore 32GB DDR5 RAM",
+            "price": 129.99,
+            "image": "https://cdn.mos.cms.futurecdn.net/GFukx5y3yrGrBthhPcnBwL.jpg"
+        },
+        {
+            "name": "QuantumBlade X9 CPU",
+            "price": 399.99,
+            "image": "https://newsroom.intel.com/wp-content/uploads/2024/11/newsroom-Intel-ARL-Chip-4-scaled.jpg"
+        },
+        {
+            "name": "LumaType RGB Keyboard",
+            "price": 89.99,
+            "image": "https://gravastar.de/cdn/shop/files/Mercury-K1-Gaming-Keyboard-Gradient-Black-75-Mechanical-Keyboard.webp?v=1765425565&width=2048"
+        },
+        {
+            "name": "VisionMax 27\" 4K Monitor",
+            "price": 329.99,
+            "image": "https://images.tcdn.com.br/img/img_prod/1358667/monitor_gamer_kalkan_freya_24_pol_1444p_qhd_ips_lcd_144_hz_klk00056_1585_1_c889cdb1b1d0cd1ab679fc49cc9924c3.jpeg"
+        },
+        {
+            "name": "AeroCool Silent Fan",
+            "price": 24.99,
+            "image": "https://images.kabum.com.br/produtos/fotos/sync_mirakl/405672/xlarge/Kit-3-Cooler-Fan-LED-RGB-120Mm-Com-Controlador-Gabinete-Pc-Gamer-Ventoinha-Fc1306_1771620823.png"
+        },
+        {
+            "name": "TitanForge Gaming GPU",
+            "price": 699.99,
+            "image": "https://static.gigabyte.com/StaticFile/Image/Global/62c0b2b60a46145c021a1f64afec3a2a/Product/16867"
+        },
+        {
+            "name": "FlashDrive Pro 2TB SSD",
+            "price": 219.99,
+            "image": "https://m.media-amazon.com/images/I/51OHIGS4wtL._AC_UF894,1000_QL80_.jpg"
+        },
+        {
+            "name": "EchoWave USB Headset",
+            "price": 59.99,
+            "image": "https://m.media-amazon.com/images/I/6144+3nBNhL.jpg"
+        },
+        {
+            "name": "CoreLink WiFi 7 Router",
+            "price": 179.99,
+            "image": "https://cdn.shoppub.io/cdn-cgi/image/w=1000,h=1000,q=80,f=auto/oficinadosbits/media/uploads/produtos/foto/tiurgctx/file.png"
+        }
+    ]
 }
