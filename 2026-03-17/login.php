@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <label for="senha" class="form-label">Senha</label>
                 <input type="password" class="form-control" id="senha" name="senha" required>
                 <div class="text-danger" id="errMessage">
-                    <?= $_GET['err'] ?>
+                    <?= $_GET['err'] ?? '' ?>
                 </div>
             </div>
             <div class="form-check mb-3">
