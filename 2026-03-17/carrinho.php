@@ -13,68 +13,11 @@ $produtos = $dados['products'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <style>
-
-        .bg-scrim {
-            position: fixed;
-            background: url("https://cdn.wallpapersafari.com/94/21/Z3fgxb.gif");
-            background-size: 1920px;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: -1;
-            filter: blur(4px);
-        }
-
-        .min-height-screen {
-            min-height: 100vh;
-        }
-
-        .cart-container {
-            display: flex;
-            flex-direction: column;
-            align-items:center;
-            max-height: 80vh;
-        }
-
-        .cart-item-list {
-            width: fit-content;
-            gap: 4px;
-            max-height: 80vh;
-            overflow-y: auto;
-        }
-
-        /* Track */
-        .cart-item-list::-webkit-scrollbar {
-            width: 10px;
-        }
-
-        /* Handle */
-        .cart-item-list::-webkit-scrollbar-thumb {
-            background: black;
-            border: 1px solid white;
-            border-radius: 10px;
-        }
-
-        /* Handle on hover */
-        .cart-item-list::-webkit-scrollbar-thumb:hover {
-            background: #555;
-        }
-
-        .card-item {
-            max-width: 540px;
-        }
-
-        .produto-image {
-            aspect-ratio: 16 / 9;
-        }
-    </style>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body style="">
