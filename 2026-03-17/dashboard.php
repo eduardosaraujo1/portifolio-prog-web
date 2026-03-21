@@ -20,8 +20,7 @@ $produtos = $dados['products'];
 </head>
 
 <body style="background-color: #f6f6f6;">
-    <div class="bg-scrim"></div>
-    <nav class="navbar  sticky-top navbar-dark navbar-expand-lg bg-dark">
+    <nav class="navbar sticky-top navbar-dark navbar-expand-lg bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand text-primary" href="#">Loja Microchips</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,20 +44,28 @@ $produtos = $dados['products'];
             </div>
         </div>
     </nav>
-    <div class="container mt-4 products-container">
-        <?php foreach ($produtos as $produto): ?>
-            <div class="card" style="background-color: #ffffffc0">
-                <img src="<?= $produto['image'] ?>" class="card-img-top produto-image bg-white" alt="exemplo">
-                <div class="card-body vstack">
-                    <h5 class="card-title"><?= $produto['name'] ?></h5>
-                    <p class="card-text">
-                        R$<?php echo $produto['price'] ?>
-                    </p>
-                    <a href="#" class="btn btn-primary mt-auto">Adicionar ao carrinho</a>
+    <div class="container mt-4">
+        <div class="products-container">
+            <?php foreach ($produtos as $produto): ?>
+                <div class="card" style="background-color: #ffffffc0">
+                    <img src="<?= $produto['image'] ?>" class="card-img-top produto-image bg-white" alt="exemplo">
+                    <div class="card-body vstack">
+                        <h5 class="card-title"><?= $produto['name'] ?></h5>
+                        <p class="card-text">
+                            R$<?php echo $produto['price'] ?>
+                        </p>
+                        <a href="#" class="btn btn-primary mt-auto">Adicionar ao carrinho</a>
+                    </div>
                 </div>
-            </div>
-        <?php endforeach; ?>
+            <?php endforeach; ?>
+        </div>
     </div>
+    <footer class="bg-dark fixed-bottom">
+        <div class="text-center py-3 text-white">
+            &copy; 2026 Loja Microchips. Todos os direitos reservados. Trabalho de Jorge Cannalonga e Eduardo Soares.
+        </div>
+    </footer>
+    <div class="bg-scrim"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>

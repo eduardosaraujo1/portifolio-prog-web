@@ -75,6 +75,11 @@ $produtos = $dados['products'];
         </div>
     </div>
 
+<footer class="bg-dark fixed-bottom">
+        <div class="text-center py-3 text-white">
+            &copy; 2026 Loja Microchips. Todos os direitos reservados. Trabalho de Jorge Cannalonga e Eduardo Soares.
+        </div>
+    </footer>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
