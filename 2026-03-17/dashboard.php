@@ -19,7 +19,7 @@ $produtos = $dados['products'];
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body style="background-color: #f6f6f6;">
+<body class="d-flex flex-column vh-100">
     <nav class="navbar sticky-top navbar-dark navbar-expand-lg bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand text-primary" href="#">Loja Microchips</a>
@@ -44,23 +44,25 @@ $produtos = $dados['products'];
             </div>
         </div>
     </nav>
-    <div class="container mt-4">
-        <div class="products-container">
-            <?php foreach ($produtos as $produto): ?>
-                <div class="card" style="background-color: #ffffffc0">
-                    <img src="<?= $produto['image'] ?>" class="card-img-top produto-image bg-white" alt="exemplo">
-                    <div class="card-body vstack">
-                        <h5 class="card-title"><?= $produto['name'] ?></h5>
-                        <p class="card-text">
-                            R$<?php echo $produto['price'] ?>
-                        </p>
-                        <a href="#" class="btn btn-primary mt-auto">Adicionar ao carrinho</a>
+    <div class="flex-fill overflow-y-scroll">
+        <div class="container mt-4 py-4">
+            <div class="products-container">
+                <?php foreach ($produtos as $produto): ?>
+                    <div class="card" style="background-color: #ffffffc0">
+                        <img src="<?= $produto['image'] ?>" class="card-img-top produto-image bg-white" alt="exemplo">
+                        <div class="card-body vstack">
+                            <h5 class="card-title"><?= $produto['name'] ?></h5>
+                            <p class="card-text">
+                                R$<?php echo $produto['price'] ?>
+                            </p>
+                            <button class="btn btn-primary mt-auto">Adicionar ao carrinho</button>
+                        </div>
                     </div>
-                </div>
-            <?php endforeach; ?>
+                <?php endforeach; ?>
+            </div>
         </div>
     </div>
-    <footer class="bg-dark fixed-bottom">
+    <footer class="bg-dark">
         <div class="text-center py-3 text-white">
             &copy; 2026 Loja Microchips. Todos os direitos reservados. Trabalho de Jorge Cannalonga e Eduardo Soares.
         </div>

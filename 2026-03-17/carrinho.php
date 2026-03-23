@@ -20,8 +20,7 @@ $produtos = $dados['products'];
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body style="">
-    <div class="bg-scrim"></div>
+<body class="d-flex flex-column min-vh-100">
     <nav class="navbar sticky-top navbar-dark navbar-expand-lg bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand text-primary" href="#">Loja Microchips</a>
@@ -51,7 +50,7 @@ $produtos = $dados['products'];
             </div>
         </div>
     </nav>
-    <div class="container mt-4">
+    <div class="container mt-4 flex-fill">
         <div class="cart-container">
             <div class="cart-item-list">
                 <?php for ($i = 0; $i < 10; ++$i): ?>
@@ -71,16 +70,24 @@ $produtos = $dados['products'];
                 </div>
                 <?php endfor; ?>
             </div>
-            <button class="btn btn-primary">Finalizar Compra</button>
+            <div class="d-flex gap-2 mt-2">
+                <form action="#">
+                    <button class="btn btn-primary">Finalizar Compra</button>
+                </form>
+                <form action="#" class="bg-light rounded">
+                    <button class="btn btn-outline-danger">Limpar Carrinho</button>
+                </form>
+            </div>
         </div>
     </div>
 
-<footer class="bg-dark fixed-bottom">
+    <footer class="bg-dark">
         <div class="text-center py-3 text-white">
             &copy; 2026 Loja Microchips. Todos os direitos reservados. Trabalho de Jorge Cannalonga e Eduardo Soares.
         </div>
     </footer>
 
+    <div class="bg-scrim"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
