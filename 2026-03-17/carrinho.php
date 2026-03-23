@@ -6,6 +6,7 @@ $dados = json_decode(file_get_contents("data/products.json"), true);
 /** @var array<string,int> Carrinho */
 $carrinho = $_SESSION['carrinho'] ?? [];
 $produtos = $dados['products'] ?? [];
+$cartEmpty = empty($carrinho);
 
 /**
  * @param array{id:int,name:string,price:double,image:string}[] $listaProdutos
@@ -30,6 +31,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else if ($acao === "finalizarCompra") {
         $_SESSION['carrinho'] = [];
         header("Location: dashboard.php");
+    } else if ($acao === "removerItem") {
+        $item = $_POST['productId'] ?? null;
+        if (! empty($item)) {
+            unset($_SESSION['carrinho'][$item]);
+        }
+        header("Location: carrinho.php");
     }
 }
 
@@ -79,9 +86,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </nav>
     <div class="container mt-4 flex-fill">
+        <!-- Debug: exibe o conteúdo da variável $_SESSION -->
+        <!-- <pre class="bg-dark text-white rounded p-2"><?= json_encode($_SESSION, JSON_PRETTY_PRINT) ?></pre> -->
         <div class="cart-container">
             <div class="cart-item-list">
-                <?php if (empty($carrinho)): ?>
+                <?php if ($cartEmpty): ?>
                     <div class="card mb-3 w-100">
                         <div class="col-md-8">
                             <div class="card-body">
@@ -106,12 +115,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <div class="col-md-4">
                                 <img src="<?= $produto['image'] ?>" class="w-100 h-100 img-fluid produto-image rounded-start shadow" alt="Foto Produto">
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-6">
                                 <div class="card-body">
                                     <h5 class="card-title"><?= $produto['name'] ?></h5>
                                     <p class="card-text">Quantidade: <?= $quantidade ?></p>
                                     <p class="card-text"><small class="text-body-secondary">R$<?= $produto['price'] ?></small></p>
                                 </div>
+                            </div>
+                            <div class="col-md-2 d-grid" style="place-items:center">
+                                <form action="#" method="post">
+                                    <input type="hidden" name="action" value="removerItem">
+                                    <input type="hidden" name="productId" value="<?= $produto['id'] ?>">
+                                    <button class="btn btn-danger"><i class="bi bi-trash"></i></button></input>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -120,11 +136,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="d-flex gap-2">
                 <form action="#" method="POST">
                     <input type="hidden" name="action" value="finalizarCompra" />
-                    <button class="btn btn-primary w-fit-content">Finalizar Compra</button>
+                    <button <?= $cartEmpty ? 'disabled' : '' ?> class="btn btn-primary w-fit-content">Finalizar Compra</button>
                 </form>
                 <form action="#" method="post" class="bg-dark rounded">
                     <input type="hidden" name="action" value="limparCarrinho" />
-                    <button class="btn btn-outline-danger">Limpar carrinho</button>
+                    <button <?= $cartEmpty ? 'disabled' : '' ?> class="btn btn-outline-danger">Limpar carrinho</button>
                 </form>
             </div>
         </div>
