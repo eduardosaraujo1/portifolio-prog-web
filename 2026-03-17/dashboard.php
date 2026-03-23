@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="d-flex flex-column min-height-100">
+<body class="d-flex flex-column min-vh-100">
     <nav class="navbar sticky-top navbar-dark navbar-expand-lg bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand text-primary" href="#">Loja Microchips</a>
@@ -74,8 +74,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </div>
     </nav>
-    <div class="container mt-4 flex-1">
-        <pre class="bg-dark text-white rounded p-2"><?= json_encode($_SESSION, JSON_PRETTY_PRINT) ?></pre>
+    <div class="container mt-4 flex-fill">
+        <!-- <pre class="bg-dark text-white rounded p-2"><?= json_encode($_SESSION, JSON_PRETTY_PRINT) ?></pre> -->
         <div class="products-container">
             <?php foreach ($produtos as $produto): ?>
                 <div class="card" style="background-color: #ffffffc0">

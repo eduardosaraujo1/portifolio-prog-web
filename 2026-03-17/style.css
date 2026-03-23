@@ -2,7 +2,6 @@
     position: fixed;
     background: url("https://cdn.wallpapersafari.com/94/21/Z3fgxb.gif");
     background-size: 1920px;
-    background-color: black;
     top: 0;
     left: 0;
     width: 100%;
@@ -10,6 +9,7 @@
     background-color: rgba(0, 0, 0, 0.5);
     z-index: -1;
     filter: blur(4px);
+    transform: scale(1.1);
 }
 
 .min-height-screen {
@@ -20,7 +20,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-height: 80vh;
 }
 
 .cart-item-list {
