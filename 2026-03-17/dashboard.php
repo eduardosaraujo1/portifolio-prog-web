@@ -2,9 +2,39 @@
 
 require 'middleware/auth.php';
 
+
+// Ler produtos cadastrados
 $dados = json_decode(file_get_contents("data/products.json"), true);
 $produtos = $dados['products'];
 
+// Cuidar do POST
+function addToCart(string $productId)
+{
+    // Certificar-se que um carrinho já existe.
+    if (! isset($_SESSION['carrinho'])) {
+        $_SESSION['carrinho'] = [];
+    }
+
+    // Se produto não estivesse no carrinho antes, inicialize-o com quantidade padrão 0
+    if (! isset($_SESSION['carrinho'][$productId])) {
+        $_SESSION['carrinho'][$productId] = 0;
+    }
+
+    // Acrescentar valor ao carrinho
+    $_SESSION['carrinho'][$productId]++;
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $productId = $_POST['addToCart'] ?? null;
+
+    // Por simplicidade, omitirei a etapa de verificar se $productId é de fato um ID de produto válido
+
+    if ($productId !== null) {
+        addToCart($productId);
+    }
+
+    header('Location: dashboard.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -19,7 +49,7 @@ $produtos = $dados['products'];
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body style="background-color: #f6f6f6;">
+<body class="d-flex flex-column min-height-100">
     <nav class="navbar sticky-top navbar-dark navbar-expand-lg bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand text-primary" href="#">Loja Microchips</a>
@@ -44,7 +74,8 @@ $produtos = $dados['products'];
             </div>
         </div>
     </nav>
-    <div class="container mt-4">
+    <div class="container mt-4 flex-1">
+        <pre class="bg-dark text-white rounded p-2"><?= json_encode($_SESSION, JSON_PRETTY_PRINT) ?></pre>
         <div class="products-container">
             <?php foreach ($produtos as $produto): ?>
                 <div class="card" style="background-color: #ffffffc0">
@@ -54,13 +85,16 @@ $produtos = $dados['products'];
                         <p class="card-text">
                             R$<?php echo $produto['price'] ?>
                         </p>
-                        <a href="#" class="btn btn-primary mt-auto">Adicionar ao carrinho</a>
+                        <form action="dashboard.php" method="POST" class="mt-auto">
+                            <input type="hidden" name="addToCart" value="<?= $produto['id'] ?>">
+                            <button class="btn btn-primary ">Adicionar ao carrinho</button>
+                        </form>
                     </div>
                 </div>
             <?php endforeach; ?>
         </div>
     </div>
-    <footer class="bg-dark fixed-bottom">
+    <footer class="bg-dark position-sticky bottom-0">
         <div class="text-center py-3 text-white">
             &copy; 2026 Loja Microchips. Todos os direitos reservados. Trabalho de Jorge Cannalonga e Eduardo Soares.
         </div>
