@@ -1,5 +1,11 @@
 <?php
 session_start();
+
+if (! empty($_SESSION['usuario'])) {
+    header("Location: dashboard.php");
+    exit();
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'] ?? null; // Operador '??': se o atributo 'email' não exisitr no POST, simplesmente definir a variável como nulo.
     $password = $_POST['password'] ?? null;

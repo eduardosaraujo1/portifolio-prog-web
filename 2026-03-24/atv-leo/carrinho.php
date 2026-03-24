@@ -10,22 +10,22 @@ if (empty($_SESSION['usuario'])) {
 require "php/produtos.php";
 
 $carrinho = $_SESSION['carrinho'] ?? [];
-$produtosCarrinho = [
-    [
-        "id" => 1,
-        "nome" => "Teclado Mecânico Attack Shark K86 RGB Cinza",
-        "preco" => "436,04",
-        "imagem" => "https://http2.mlstatic.com/D_NQ_NP_2X_857748-MLA99990413179_112025-F.webp",
-        "quantidade" => 2
-    ],
-    [
-        "id" => 2,
-        "nome" => "Teclado Mecânico Attack Shark K86 RGB Cinza",
-        "preco" => "436,04",
-        "imagem" => "https://http2.mlstatic.com/D_NQ_NP_2X_857748-MLA99990413179_112025-F.webp",
-        "quantidade" => 2
-    ],
-];
+$total = 0;
+$produtosCarrinho = [];
+
+foreach ($produtos as $produto) {
+    if (isset($carrinho[$produto['id']])) {
+        $quantidade = $carrinho[$produto['id']];
+        $total += $quantidade * $produto['preco'];
+        array_push($produtosCarrinho, [
+            'id' => $produto['id'],
+            'nome' => $produto['nome'],
+            'imagem' => $produto['imagem'],
+            'preco' => $produto['preco'],
+            'quantidade' => $quantidade
+        ]);
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -63,16 +63,28 @@ $produtosCarrinho = [
         <h3>Seus produtos:</h3>
         <div class="d-flex gap-2">
             <div class="d-flex flex-column gap-1" style="grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr))">
+                <?php if (empty($produtosCarrinho)) { ?>
+                    <div class="card" style="width:540px;">
+                        <div class="row g-0">
+                            <div class="col-md-12">
+                                <div class="card-body">
+                                    <h5 class="card-title">Seu carrinho está vazio.</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                <?php } ?>
                 <?php foreach ($produtosCarrinho as $p) { ?>
                     <div class="card" style="max-width:540px;">
                         <div class="row g-0">
                             <div class="col-md-4">
-                                <img src="<?php echo $p['imagem'] ?>" class="img-fluid rounded-start h-100 object-fit-contain" alt="produto">
+                                <img src="<?php echo $p['imagem'] ?>" class="img-fluid rounded-start w-100 object-fit-contain" style="aspect-ratio:4/3" alt="produto">
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
                                     <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">Preço: R$<?php echo $p['preco'] ?></p>
+                                    <p class="card-text">Preço: R$<?php echo number_format($p['preco'], 2, ',', '.') ?></p>
                                     <p class="card-text"><small class="text-body-secondary">Quantidade: <?php echo $p['quantidade'] ?></small></p>
                                 </div>
                             </div>
@@ -81,7 +93,7 @@ $produtosCarrinho = [
                 <?php } ?>
             </div>
             <div class="d-flex flex-column">
-                <h4>Total: R$100,00</h4>
+                <h4>Total: R$<?php echo number_format($total, 2, ',', '.') ?></h4>
                 <div class="hstack gap-1">
                     <a href="dashboard.php" class="btn btn-primary">Finalizar compra</a>
                     <a href="php/limpar-carrinho.php" class="btn btn-danger">Limpar carrinho</a>

@@ -51,10 +51,7 @@ require "php/produtos.php";
                     <div class="card-body">
                         <h5 class="card-title text-truncate"><?php echo $p['nome'] ?></h5>
                         <p class="card-text">Preço: R$ <?php echo $p['preco']; ?></p>
-                        <form action="php/post-carrinho.php" method="post">
-                            <input type="hidden" name="idProduto" value="<?php echo $p['id'] ?>">
-                            <button class="btn btn-primary">Adicionar ao carrinho</button>
-                        </form>
+                        <a href="php/post-carrinho.php?idProduto=<?php echo $p['id'] ?>" class="btn btn-primary">Adicionar ao carrinho</a>
                     </div>
                 </div>
             <?php } ?>
