@@ -107,8 +107,8 @@ $totalCarrinho = array_reduce($produtosCarrinho, function ($acc, $produto) {
         <div class="container py-4 h-100">
             <!-- Debug: exibe o conteúdo da variável $_SESSION -->
             <!-- <pre class="bg-dark text-white rounded p-2"><?= json_encode($_SESSION, JSON_PRETTY_PRINT) ?></pre> -->
-            <div class="cart-container h-100">
-                <div class="cart-item-list position-relative">
+            <div class="d-flex flex-column align-items-center h-100">
+                <div class="overflow-y-auto position-relative">
                     <?php if ($cartEmpty): ?>
                         <div class="card mb-3 w-100">
                             <div class="card-body">
@@ -121,7 +121,7 @@ $totalCarrinho = array_reduce($produtosCarrinho, function ($acc, $produto) {
                             <div class="card mb-1 card-item">
                                 <div class="row g-0">
                                     <div class="col-md-4">
-                                        <img src="<?= $produto['image'] ?>" class="w-100 h-100 img-fluid produto-image rounded-start shadow" alt="Foto Produto">
+                                        <img src="<?= $produto['image'] ?>" class="w-100 h-100 img-fluid aspect-ratio-16x9 rounded-start shadow" alt="Foto Produto">
                                     </div>
                                     <div class="col-md-6">
                                         <div class="card-body">
@@ -130,7 +130,7 @@ $totalCarrinho = array_reduce($produtosCarrinho, function ($acc, $produto) {
                                             <p class="card-text"><small class="text-body-secondary">R$<?= $produto['price'] * $produto['quantity'] ?></small></p>
                                         </div>
                                     </div>
-                                    <div class="col-md-2 d-grid" style="place-items:center">
+                                    <div class="col-md-2 d-grid place-items-center">
                                         <form action="#" method="post">
                                             <input type="hidden" name="action" value="removerItem">
                                             <input type="hidden" name="productId" value="<?= $produto['id'] ?>">

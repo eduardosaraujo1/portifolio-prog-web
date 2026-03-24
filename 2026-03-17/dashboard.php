@@ -82,7 +82,7 @@ function addToCart(string $productId)
             <div class="products-container">
                 <?php foreach ($produtos as $produto): ?>
                     <div class="card">
-                        <img src="<?= $produto['image'] ?>" class="card-img-top produto-image bg-white" alt="foto-produto">
+                        <img src="<?= $produto['image'] ?>" class="card-img-top aspect-ratio-16x9 bg-white" alt="foto-produto">
                         <div class="card-body vstack">
                             <h5 class="card-title"><?= $produto['name'] ?></h5>
                             <p class="card-text">

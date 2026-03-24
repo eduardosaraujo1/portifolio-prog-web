@@ -44,10 +44,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <link rel="shortcut icon" href="favicon.jpg" type="image/x-icon">
     <style>
-        .min-height-screen {
-            min-height: 100vh;
-        }
-
         .w-login-card {
             width: clamp(170px, 100%, 24rem);
         }
@@ -57,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body style="background-color: #f6f6f6;">
-    <div class="container d-flex flex-column justify-content-center align-items-center min-height-screen">
+    <div class="container d-flex flex-column justify-content-center align-items-center min-vh-100">
         <form action="#" method="post" class="card p-4 w-login-card">
             <div class="mb-3">
                 <label for="email" class="form-label">E-mail</label>
