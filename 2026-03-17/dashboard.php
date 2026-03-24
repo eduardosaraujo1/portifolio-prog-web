@@ -2,6 +2,18 @@
 
 require 'middleware/auth.php';
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $productId = $_POST['addToCart'] ?? null;
+
+    // Por simplicidade, omitirei a etapa de verificar se $productId é de fato um ID de produto válido
+
+    if ($productId !== null) {
+        addToCart($productId);
+    }
+
+    header('Location: dashboard.php');
+    die();
+}
 
 // Ler produtos cadastrados
 $dados = json_decode(file_get_contents("data/products.json"), true);
@@ -23,18 +35,6 @@ function addToCart(string $productId)
     // Acrescentar valor ao carrinho
     $_SESSION['carrinho'][$productId]++;
 }
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $productId = $_POST['addToCart'] ?? null;
-
-    // Por simplicidade, omitirei a etapa de verificar se $productId é de fato um ID de produto válido
-
-    if ($productId !== null) {
-        addToCart($productId);
-    }
-
-    header('Location: dashboard.php');
-}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -43,16 +43,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
+
+    <link rel="shortcut icon" href="favicon.jpg" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="d-flex flex-column min-vh-100">
+<body class="d-flex flex-column vh-100">
     <nav class="navbar sticky-top navbar-dark navbar-expand-lg bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand text-primary" href="#">Loja Microchips</a>
+            <a class="navbar-brand text-primary" href="dashboard.php">Loja GoatChips</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -74,29 +76,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </div>
     </nav>
-    <div class="container mt-4 flex-fill">
-        <!-- <pre class="bg-dark text-white rounded p-2"><?= json_encode($_SESSION, JSON_PRETTY_PRINT) ?></pre> -->
-        <div class="products-container">
-            <?php foreach ($produtos as $produto): ?>
-                <div class="card" style="background-color: #ffffffc0">
-                    <img src="<?= $produto['image'] ?>" class="card-img-top produto-image bg-white" alt="exemplo">
-                    <div class="card-body vstack">
-                        <h5 class="card-title"><?= $produto['name'] ?></h5>
-                        <p class="card-text">
-                            R$<?php echo $produto['price'] ?>
-                        </p>
-                        <form action="dashboard.php" method="POST" class="mt-auto">
-                            <input type="hidden" name="addToCart" value="<?= $produto['id'] ?>">
-                            <button class="btn btn-primary ">Adicionar ao carrinho</button>
-                        </form>
+    <div class="overflow-y-scroll flex-fill">
+        <div class="container my-4">
+            <!-- <pre class="bg-dark text-white rounded p-2"><?= json_encode($_SESSION, JSON_PRETTY_PRINT) ?></pre> -->
+            <div class="products-container">
+                <?php foreach ($produtos as $produto): ?>
+                    <div class="card">
+                        <img src="<?= $produto['image'] ?>" class="card-img-top produto-image bg-white" alt="foto-produto">
+                        <div class="card-body vstack">
+                            <h5 class="card-title"><?= $produto['name'] ?></h5>
+                            <p class="card-text">
+                                R$<?php echo $produto['price'] ?>
+                            </p>
+                            <form action="dashboard.php" method="POST" class="mt-auto">
+                                <input type="hidden" name="addToCart" value="<?= $produto['id'] ?>">
+                                <button class="btn btn-primary ">Adicionar ao carrinho</button>
+                            </form>
+                        </div>
                     </div>
-                </div>
-            <?php endforeach; ?>
+                <?php endforeach; ?>
+            </div>
         </div>
     </div>
-    <footer class="bg-dark position-sticky bottom-0">
+    <footer class="bg-dark">
         <div class="text-center py-3 text-white">
-            &copy; 2026 Loja Microchips. Todos os direitos reservados. Trabalho de Jorge Cannalonga e Eduardo Soares.
+            &copy; 2026 Loja GoatChips. Todos os direitos reservados. Trabalho de Jorge Cannalonga e Eduardo Soares.
         </div>
     </footer>
     <div class="bg-scrim"></div>
