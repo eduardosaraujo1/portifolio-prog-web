@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body style="background-color: #f6f6f6">
+<body style="background-color: lightgray">
     <div class="container mt-4 d-flex justify-content-center">
         <form action="#" method="post" class="card" style="width: 24rem">
             <div class="card-body">
