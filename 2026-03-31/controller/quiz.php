@@ -1,39 +1,14 @@
 <?php
-session_start();
-
 if (!isset($_SESSION['email_user'])) {
-    header('Location: .');
+    redirect('/');
     die();
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz Time</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <style>
-        .pergunta {
-            display: none;
-            width: 60vw;
-            min-height: 28vh;
-        }
-
-        .visivel {
-            display: flex;
-            flex-direction: column;
-            align-items: start;
-        }
-    </style>
-</head>
-
-<script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-
-<body>
-    <div class="container-fluid d-flex flex-column align-items-center mt-4">
+<?= render_view('partial.header', ['title' => 'Login - QuizMe']); ?>
+<!-- REFAZER USANDO COMPONENTES -->
+<h1>Work In Progress</h1>
+<!-- <div class="container-fluid d-flex flex-column align-items-center mt-4">
         <form action="resultado.php" method="post" class="quiz-form">
             <div id="pergunta-1" class="pergunta">
                 <h3>1. O Comando Echo é utilizado para:</h3>
@@ -482,10 +457,5 @@ if (!isset($_SESSION['email_user'])) {
         for (const input of document.querySelectorAll("input")) {
             input.oninput = checkSubmitStatus;
         }
-    </script>
-
-    <script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-</body>
-
-
-</html>
+    </script> -->
+<?= include render_view('partial.footer'); ?>

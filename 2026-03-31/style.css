@@ -1,0 +1,11 @@
+.pergunta {
+    display: none;
+    width: 60vw;
+    min-height: 28vh;
+}
+
+.visivel {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
