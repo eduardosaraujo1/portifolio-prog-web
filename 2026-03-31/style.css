@@ -1,11 +1,9 @@
-.pergunta {
-    display: none;
-    width: 60vw;
-    min-height: 28vh;
+.question-carousel__item {
+    flex-basis: 100%;
+    flex-shrink: 0;
 }
 
-.visivel {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
+.question-carousel__item .card {
+    width: min(36rem, 100%);
+    margin-inline: auto;
 }
