@@ -1,2 +1,2 @@
 <?php
-require 'scripts/autoload.php';
+require 'scripts/global.php';

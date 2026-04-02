@@ -1,5 +1,5 @@
 <?php
-require 'scripts/autoload.php';
+require 'scripts/global.php';
 
 session_start();
 session_destroy();

@@ -1,9 +1,0 @@
-.question-carousel__item {
-    flex-basis: 100%;
-    flex-shrink: 0;
-}
-
-.question-carousel__item .card {
-    width: min(36rem, 100%);
-    margin-inline: auto;
-}

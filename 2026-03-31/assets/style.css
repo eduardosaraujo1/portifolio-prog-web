@@ -1,0 +1,8 @@
+/* Reimplementação do 'list-group-numbered' usando letras no lugar de números */
+.list-group-numbered-alpha {
+    counter-reset: section;
+}
+.list-group-numbered-alpha > .list-group-item::before {
+    content: counters(section, ".", lower-alpha) ") ";
+    counter-increment: section;
+}

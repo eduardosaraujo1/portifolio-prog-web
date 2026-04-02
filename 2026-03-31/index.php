@@ -1,5 +1,6 @@
 <?php
-require 'scripts/autoload.php';
+require 'scripts/global.php';
+$pageTitle = "Login - QuizMe";
 
 if (isset($_SESSION['email_user'])) {
     redirect('/quiz.php');
@@ -24,9 +25,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-<?= render_view('header.phtml', ['title' => 'Login - QuizMe']); ?>
+<?php require 'view/header.phtml'; ?>
 <div class="container-fluid d-flex align-items-center justify-content-center bg-dark min-vh-100 pt-3">
-    <div class="card">
+    <div class="card w-100" style="max-width:20rem;">
         <div class="card-body">
             <h3 class="text-center fw-bold">QuizMe</h3>
             <form action="#" method="post">
@@ -43,4 +44,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </div>
 </div>
-<?= render_view('footer.phtml'); ?>
+<?php require 'view/footer.phtml'; ?>
