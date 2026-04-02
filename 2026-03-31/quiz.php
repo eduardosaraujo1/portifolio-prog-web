@@ -46,6 +46,7 @@ if (!isset($_SESSION['email_user'])) {
                 <div class="d-flex py-1 px-4" data-show-finish="false">
                     <button class="btn btn-secondary js-btn-previous">Anterior</button>
                     <button class="btn btn-primary js-btn-next ms-auto">Próximo</button>
+                    <!-- <button class="btn btn-success js-btn-next ms-auto">Enviar respostas</button> -->
                 </div>
             </div>
         </div>

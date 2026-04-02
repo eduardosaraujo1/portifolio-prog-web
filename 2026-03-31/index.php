@@ -3,7 +3,7 @@ require 'scripts/global.php';
 $pageTitle = "Login - QuizMe";
 
 if (isset($_SESSION['email_user'])) {
-    redirect('/quiz.php');
+    redirect('quiz.php');
 }
 
 $emailCache = $_COOKIE['emailCache'] ?? '';
