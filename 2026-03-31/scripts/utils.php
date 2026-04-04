@@ -11,3 +11,11 @@ function e(string $string, int $flags = ENT_QUOTES | ENT_SUBSTITUTE, string|null
 {
     return htmlspecialchars($string, $flags, $encoding, $double_encode);
 }
+
+function auth_check()
+{
+    if (!isset($_SESSION['nome_usuario'])) {
+        redirect('/');
+        die();
+    }
+}
