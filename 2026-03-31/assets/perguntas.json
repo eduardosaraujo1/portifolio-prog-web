@@ -1,7 +1,7 @@
 {
   "data": [
     {
-      "id": 1,
+      "id": "1",
       "formType": "radio",
       "text": "O comando echo é utilizado para:",
       "alternatives": [
@@ -10,31 +10,31 @@
         "Criar funções",
         "Encerrar o código"
       ],
-      "correct": [1]
+      "correct": ["1"]
     },
     {
-      "id": 2,
+      "id": "2",
       "formType": "radio",
       "text": "Em PHP, uma variável começa com:",
       "alternatives": ["#", "$", "@", "&"],
-      "correct": [1]
+      "correct": ["1"]
     },
     {
-      "id": 3,
+      "id": "3",
       "formType": "radio",
       "text": "Qual é uma variável válida?",
       "alternatives": ["$1nome", "$nome_usuario", "nome$", "$nome-usuario"],
-      "correct": [1]
+      "correct": ["1"]
     },
     {
-      "id": 4,
+      "id": "4",
       "formType": "select",
       "text": "Qual método envia dados pela URL?",
       "alternatives": ["POST", "GET"],
-      "correct": [1]
+      "correct": ["1"]
     },
     {
-      "id": 5,
+      "id": "5",
       "formType": "checkbox",
       "text": "Sobre o método POST (marque as corretas):",
       "alternatives": [
@@ -43,52 +43,52 @@
         "Permite envio de grande volume de dados",
         "Só funciona com textos"
       ],
-      "correct": [1, 2]
+      "correct": ["1", "2"]
     },
     {
-      "id": 6,
+      "id": "6",
       "formType": "radio",
       "text": "Qual input é mais adequado para senha?",
       "alternatives": ["text", "email", "password"],
-      "correct": [2]
+      "correct": ["2"]
     },
     {
-      "id": 7,
+      "id": "7",
       "formType": "radio",
       "text": "Qual permite escolher apenas UMA opção?",
       "alternatives": ["checkbox", "radio", "text", "textarea"],
-      "correct": [1]
+      "correct": ["1"]
     },
     {
-      "id": 8,
+      "id": "8",
       "formType": "radio",
       "text": "Checkbox é usado quando:",
       "alternatives": ["Apenas uma opção", "Múltiplas opções"],
-      "correct": [1]
+      "correct": ["1"]
     },
     {
-      "id": 9,
+      "id": "9",
       "formType": "select",
       "text": "A tag <select> serve para:",
       "alternatives": ["Campo de texto", "Lista suspensa", "Botão", "Sessão"],
-      "correct": [1]
+      "correct": ["1"]
     },
     {
-      "id": 10,
+      "id": "10",
       "formType": "radio",
       "text": "Qual estrutura usamos para decisão?",
       "alternatives": ["for", "echo", "if", "array"],
-      "correct": [2]
+      "correct": ["2"]
     },
     {
-      "id": 11,
+      "id": "11",
       "formType": "radio",
       "text": "Qual estrutura usamos para repetição?",
       "alternatives": ["if", "echo", "for", "isset"],
-      "correct": [2]
+      "correct": ["2"]
     },
     {
-      "id": 12,
+      "id": "12",
       "formType": "radio",
       "text": "Um array é:",
       "alternatives": [
@@ -97,17 +97,17 @@
         "Um formulário",
         "Um loop"
       ],
-      "correct": [1]
+      "correct": ["1"]
     },
     {
-      "id": 13,
+      "id": "13",
       "formType": "radio",
       "text": "Para criar uma função usamos:",
       "alternatives": ["create", "function", "def", "func"],
-      "correct": [1]
+      "correct": ["1"]
     },
     {
-      "id": 14,
+      "id": "14",
       "formType": "radio",
       "text": "Sessões servem para:",
       "alternatives": [
@@ -116,24 +116,24 @@
         "Criar HTML",
         "Fazer requisições"
       ],
-      "correct": [1]
+      "correct": ["1"]
     },
     {
-      "id": 15,
+      "id": "15",
       "formType": "radio",
       "text": "Cookies são armazenados:",
       "alternatives": ["No servidor", "No navegador"],
-      "correct": [1]
+      "correct": ["1"]
     },
     {
-      "id": 16,
+      "id": "16",
       "formType": "radio",
       "text": "Qual função pode consumir API?",
       "alternatives": ["echo", "file_get_contents", "isset", "print_r"],
-      "correct": [1]
+      "correct": ["1"]
     },
     {
-      "id": 17,
+      "id": "17",
       "formType": "checkbox",
       "text": "Sobre cURL (marque as corretas):",
       "alternatives": [
@@ -142,24 +142,24 @@
         "Apenas imprime dados",
         "Substitui sessão"
       ],
-      "correct": [0, 1]
+      "correct": ["0", "1"]
     },
     {
-      "id": 18,
+      "id": "18",
       "formType": "radio",
       "text": "Para acessar dados via POST usamos:",
       "alternatives": ["$_GET", "$_POST", "$_SESSION", "$_COOKIE"],
-      "correct": [1]
+      "correct": ["1"]
     },
     {
-      "id": 19,
+      "id": "19",
       "formType": "radio",
       "text": "Para verificar se variável existe:",
       "alternatives": ["check()", "isset()", "exist()", "verify()"],
-      "correct": [1]
+      "correct": ["1"]
     },
     {
-      "id": 20,
+      "id": "20",
       "formType": "radio",
       "text": "Para iniciar uma sessão usamos:",
       "alternatives": [
@@ -168,7 +168,7 @@
         "init_session()",
         "begin_session()"
       ],
-      "correct": [1]
+      "correct": ["1"]
     }
   ]
 }
