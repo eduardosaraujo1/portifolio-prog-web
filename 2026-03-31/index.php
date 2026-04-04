@@ -34,11 +34,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <form action="#" method="post">
                 <div class="mb-3">
                     <label for="nome" class="form-label">Nome</label>
-                    <input type="text" class="form-control" id="nome" name="nome">
+                    <input
+                        required
+                        type="text"
+                        class="form-control"
+                        id="nome"
+                        name="nome">
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" placeholder="nome@example.com" name="email" value="<?= $emailCache ?>">
+                    <input
+                        required
+                        type="email"
+                        class="form-control"
+                        id="email"
+                        placeholder="nome@example.com"
+                        name="email"
+                        value="<?= $emailCache ?>">
                 </div>
                 <button class="btn btn-primary">Entrar</button>
             </form>

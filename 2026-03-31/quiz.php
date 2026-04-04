@@ -1,37 +1,16 @@
 <?php
 require 'scripts/global.php';
+require 'scripts/get-perguntas.php';
 
 auth_check();
 $pageTitle = "Perguntas PHP - QuizMe";
-
-/**
- * A partir da especificação JSON das perguntas, retornar um array de arrays associativos contendo info das perguntas.
- * 
- * A estrutura do array segue:
- * - id: identificador numérico da pergunta, utilizado durante o processamento da requisição GET
- * - formType: tipo de formulário a ser exibido ao usuário. Pode ser 'select', 'checkbox' ou 'radio'.
- * - text: texto da pergunta (a pergunta em si)
- * - alternatives: as alternativas da pergunta
- * - correct: tratando a lista de alternativas como um array, correct determina uma **lista de indexes** das alternativas corretas
- * 
- * @return array<array{id:int,formType:string,text:string,alternatives:array<string>,correct:array<int>}>
- */
-function get_perguntas(): array
-{
-    $path = __DIR__ . '/../assets/perguntas.json';
-    $jsons = file_get_contents($path);
-    if ($jsons === false) throw new Exception("Não foi possível ler o arquivo '$path'. O caminho está correto?");
-    $parse = json_decode($jsons, true);
-
-    return $parse['data'];
-}
 
 $perguntas = get_perguntas();
 $questionCount = count($perguntas);
 ?>
 
 <?php require 'view/header.phtml' ?>
-<div class="w-100 min-vh-100 pt-3 bg-dark text-light overflow-hidden">
+<div class="w-100 min-vh-100 pt-3 bg-dark text-light overflow-hidden no-scroll">
     <h1 class="text-center">Quiz de PHP!</h1>
     <noscript>
         <p class="p-2 bg-danger text-light"><b>AVISO: </b>O quiz precisa de JavaScript para funcionar corretamente.</p>
@@ -39,7 +18,9 @@ $questionCount = count($perguntas);
     <form action="resultado.php" method="post">
         <div class="js-question-carousel d-flex text-dark" data-carousel-index="0">
             <?php foreach ($perguntas as $idx => $pergunta): ?>
+                <!-- Carousel Item -->
                 <div class="w-100 flex-shrink-0 px-2">
+                    <!-- Carousel Content (card) -->
                     <div class="card mx-auto w-100" style="max-width:36rem;min-height:20.25rem;">
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title">Pergunta <?= e($pergunta['id']) ?> - <?= e($pergunta['text']) ?></h5>
@@ -57,7 +38,6 @@ $questionCount = count($perguntas);
                                         // Problema: quero que o 'id' seja único na página toda, para que assim o label aponte para o item certo
                                         // Não há nenhum identificador único de alternativa de pergunta (apesar de existir $pergunta['id'] e $i, combinar esses dois números é complicado)
                                         // Solução simples: usar um hash
-                                        $hash = md5($alternativa);
                                         ?>
                                         <li class="list-group-item d-flex gap-2">
                                             <div class="form-check w-100">
@@ -65,15 +45,18 @@ $questionCount = count($perguntas);
                                                     <?= $pergunta['formType'] === 'checkbox' ? '' : 'required' ?>
                                                     class="form-check-input" type="<?= e($pergunta['formType']) ?>"
                                                     name="<?= e($pergunta['id']) ?>[]"
-                                                    value="<?= e($i) ?>" id="<?= e($hash) ?>">
-                                                <label class="form-check-label w-100" for="<?= e($hash) ?>"><?= e($alternativa) ?></label>
+                                                    value="<?= e($i) ?>" id="<?= $pergunta['id'] . "_" . $i ?>">
+                                                <label class="form-check-label w-100" for="<?= $pergunta['id'] . "_" . $i ?>"><?= e($alternativa) ?></label>
                                             </div>
                                         </li>
                                     <?php endforeach; ?>
                                 </ol>
                             <?php endif; ?>
                             <div class="d-flex mt-auto">
-                                <button type="button" class="btn btn-secondary js-btn-previous">Anterior</button>
+                                <?php if ($idx > 0): ?>
+                                    <button type="button" class="btn btn-secondary js-btn-previous">Anterior</button>
+                                <?php endif; ?>
+
                                 <?php if ($idx < $questionCount - 1): ?>
                                     <button type="button" class="btn btn-primary js-btn-next ms-auto">Próximo</button>
                                 <?php else: ?>
@@ -141,6 +124,13 @@ $questionCount = count($perguntas);
             this.btnSubmitElem.disabled = !this.formElem.checkValidity();
         }
     }
+
+    // Hack: overflow-hidden ainda permite que apertar "tab" revele os outros elementos.
+    // Formas de arrumar: tirar a transition e usar <template>, usar PHP pra gerar cada pergunta via backend, colocar tab-index=-1 em tudo, ou...
+    const noScrolls = document.querySelectorAll('.no-scroll')
+    setInterval(() => {
+        for (const e of noScrolls) e.scroll(0, 0);
+    }, 500);
 
     let carouselController;
     document.addEventListener('DOMContentLoaded', () => {
