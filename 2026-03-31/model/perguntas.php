@@ -1,9 +1,16 @@
 <?php
 
 /**
- * A partir da especificação JSON das perguntas, retornar um array de arrays associativos contendo info das perguntas
+ * A partir da especificação JSON das perguntas, retornar um array de arrays associativos contendo info das perguntas.
  * 
- * @return array<array{id:int,type:string,text:string,options:array<string>,correct:array<int>}>
+ * A estrutura do array segue:
+ * - id: identificador numérico da pergunta, utilizado durante o processamento da requisição GET
+ * - formType: tipo de formulário a ser exibido ao usuário. Pode ser 'select', 'checkbox' ou 'radio'.
+ * - text: texto da pergunta (a pergunta em si)
+ * - alternatives: as alternativas da pergunta
+ * - correct: tratando a lista de alternativas como um array, correct determina uma **lista de indexes** das alternativas corretas
+ * 
+ * @return array<array{id:int,formType:string,text:string,alternatives:array<string>,correct:array<int>}>
  */
 function get_perguntas(): array
 {

@@ -1,3 +1,8 @@
+/*Carousel*/
+.js-question-carousel {
+    transition: transform .2s ease-out;
+}
+
 /* Reimplementação do 'list-group-numbered' usando letras no lugar de números */
 .list-group-numbered-alpha {
     counter-reset: section;
